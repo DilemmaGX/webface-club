@@ -101,12 +101,21 @@ async function main() {
     if (walkEntry.isFile && walkEntry.name.endsWith(".md")) {
       if (LOG) console.log(emojify(":coffee: Processing file"), walkEntry.path);
       await mdToHtml(walkEntry.path);
+    } else if (walkEntry.isFile) {
+      if (LOG) console.log(emojify(":coffee: Copying file"), walkEntry.path);
+      const sourcePath = walkEntry.path;
+      const relativePath = sourcePath.substring(Deno.cwd().length + 3);
+      const outputPath = join("dist", relativePath);
+      await ensureDir(dirname(outputPath));
+      await Deno.copyFile(sourcePath, outputPath);
     }
   }
+  if (LOG) console.log(emojify(":bell: Minifying files..."));
   for await (const walkEntry of walk(Deno.cwd() + "/dist")) {
-    if (walkEntry.isFile) {
-      if (LOG) console.log(emojify(":bell: Cleaning file"), walkEntry.path);
-      Deno.writeTextFile(walkEntry.path, await minify(walkEntry.path))
+    if (walkEntry.isFile && (walkEntry.name.endsWith(".html") || walkEntry.name.endsWith(".css") || walkEntry.name.endsWith(".js"))) {
+      if (LOG) console.log(emojify(":bell: Minifying file"), walkEntry.path);
+      const minifiedContent = await minify(walkEntry.path);
+      await Deno.writeTextFile(walkEntry.path, minifiedContent);
     }
   }
   if (LOG) console.log(emojify(":rocket: Ready to deploy"));
