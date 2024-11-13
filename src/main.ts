@@ -54,8 +54,7 @@ async function mdToHtml(markdownPath: string): Promise<void> {
   const html = render(emojify(content), {
     allowMath: true,
     allowIframes: true,
-    // Recommended to be false. If you wish to add features like buttons, you can change it to true.
-    disableHtmlSanitization: false
+    disableHtmlSanitization: true
   });
 
   const relativePath = markdownPath.substring(Deno.cwd().length + 4);

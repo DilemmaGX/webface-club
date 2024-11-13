@@ -22,15 +22,16 @@ Checkout the wikipedia [here](https://zh.wikipedia.org/wiki/HTML)
 ```html
 <!DOCTYPE html>
 <html>
+
 <head>
-    <!-- Headers -->
     <title>Page Title</title>
 </head>
+
 <body>
-    <!-- Body -->
     <h1>This is a Heading</h1>
     <p>This is a paragraph.</p>
 </body>
+
 </html>
 ```
 

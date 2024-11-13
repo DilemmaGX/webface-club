@@ -4,8 +4,8 @@
 
 - HTML Basics
   - [Hello HTML](./htmlBasics/helloHtml/index.html)
-  - Interaction (Buttons & Inputs)
-  - Interaction (JavaScript)
+  - [Interaction (Buttons & Inputs)](./htmlBasics/interactions/index.html)
+  - [Interaction (JavaScript)](./htmlBasics/interactions/index.html)
   - Decoration (CSS)
 - React Basics
   - NodeJS & NPM (Environment)
