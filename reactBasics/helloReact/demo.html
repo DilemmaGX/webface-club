@@ -1,0 +1,16 @@
+<!doctype html><html lang=en><meta charset=UTF-8><title>Hello React</title><script src=https://unpkg.com/react@18/umd/react.development.js crossorigin></script><script src=https://unpkg.com/react-dom@18/umd/react-dom.development.js crossorigin></script><script src=https://unpkg.com/@babel/standalone/babel.min.js></script><style>body{font-family:sans-serif;padding:20px}.card{border:1px solid #ddd;padding:20px;border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,.1);max-width:300px}button{background-color:#61dafb;border:none;padding:10px 20px;border-radius:4px;cursor:pointer;font-size:16px;margin-top:10px}button:hover{background-color:#4fa8d1}</style><div id=root></div><script type=text/babel>function App() {
+            const [count, setCount] = React.useState(0);
+
+            return (
+                <div className="card">
+                    <h1>Hello React!</h1>
+                    <p>You clicked {count} times</p>
+                    <button onClick={() => setCount(count + 1)}>
+                        Click me
+                    </button>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);</script>

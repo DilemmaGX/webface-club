@@ -1,0 +1,26 @@
+<!doctype html><html lang=en><meta charset=UTF-8><title>React Components</title><script src=https://unpkg.com/react@18/umd/react.development.js crossorigin></script><script src=https://unpkg.com/react-dom@18/umd/react-dom.development.js crossorigin></script><script src=https://unpkg.com/@babel/standalone/babel.min.js></script><style>body{font-family:sans-serif;padding:20px}.user-card{border:1px solid #ccc;padding:15px;border-radius:8px;margin-bottom:10px;background-color:#fff}.user-card h3{margin-top:0}.status{display:inline-block;padding:4px 8px;border-radius:12px;font-size:12px;color:#fff}.online{background-color:#2ecc71}.offline{background-color:#95a5a6}</style><div id=root></div><script type=text/babel>// Reusable User Component
+        function User({ name, role, isOnline }) {
+            return (
+                <div className="user-card">
+                    <h3>{name}</h3>
+                    <p>Role: <strong>{role}</strong></p>
+                    <span className={`status ${isOnline ? 'online' : 'offline'}`}>
+                        {isOnline ? 'Online' : 'Offline'}
+                    </span>
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div>
+                    <h2>User List (Component Reuse)</h2>
+                    <User name="Alice Johnson" role="Admin" isOnline={true} />
+                    <User name="Bob Smith" role="Developer" isOnline={false} />
+                    <User name="Charlie Brown" role="Designer" isOnline={true} />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);</script>
